@@ -10,11 +10,11 @@ The builder takes the following options:
 * `-r <release>`: The release tag to use (such as `edge` or `v3.1`)
 * `-s`: Outputs the `rootfs.tar.gz` to stdout.
 
-Example to build a base docker image for Alpine 3.2:
+Example to build a base docker image for Alpine 3.3:
 
 ```
 docker build -f builder-image -t mxabierto/alpine-builder .
-docker run --rm mxabierto/alpine-builder -r v3.2 -s > rootfs.tar.gz
+docker run --rm mxabierto/alpine-builder -r v3.3 -s > rootfs.tar.gz
 docker build -t mxabierto/alpine .
 rm rootfs.tar.gz
 ```
