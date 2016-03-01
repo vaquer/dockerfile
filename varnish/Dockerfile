@@ -9,7 +9,7 @@
 #   -dP --link CONTAINER_ID:backend \
 #   mxabierto/varnish
 
-FROM mxabierto/alpine
+FROM debian:jessie
 
 MAINTAINER bcessa <ben@pixative.com>
 
@@ -19,7 +19,8 @@ ENV \
 ADD start.sh /start.sh
 
 RUN \
-  apk-install varnish && \
+  apt-get update && \
+  apt-get install -y varnish && \
   chmod 775 /start.sh
 
 # Cache http port and telnet interface
