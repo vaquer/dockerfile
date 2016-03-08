@@ -10,7 +10,18 @@ sed -i -e "s|DRILL_HEAP=\"4G\"|DRILL_HEAP=\"$DRILL_HEAP\"|" /apache-drill/conf/d
 # Datasources config storage
 echo drill.exec.sys.store.provider.local.path = "/apache-drill/sources" >> /apache-drill/conf/drill-override.conf
 
-# Configure datasources
+# Enable linked mongo by default, if any
+if [ -n ${MONGO_PORT_27017_TCP_ADDR} ]; then
+  echo '{
+    "storage": {
+      mongo : {
+        "type" : "mongo",
+        "connection" : "mongodb://'$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/'",
+        "enabled" : true
+      }
+    }
+  }' > /apache-drill/conf/bootstrap-storage-plugins.json
+fi
 
 # Start as foreground process
 exec /apache-drill/bin/runbit
