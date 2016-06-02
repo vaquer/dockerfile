@@ -8,7 +8,6 @@ sed -i -e "s|datastore_default:pass@localhost/datastore_default|$POSTGRES_ENV_PO
 
 # Create tables
 if [ "$INIT_DBS" = true ]; then
-  echo "Configurando la DB"
   $CKAN_HOME/bin/paster --plugin=ckan db init -c /project/development.ini
   $CKAN_HOME/bin/paster --plugin=ckan datastore set-permissions -c /project/development.ini | ssh $POSTGRES_PORT_5432_TCP_ADDR sudo -u postgres psql --username $POSTGRES_USER --set ON_ERROR_STOP=1
   $CKAN_HOME/bin/paster --plugin=ckanext-spatial spatial initdb 4326 -c /project/development.ini
@@ -19,7 +18,6 @@ $CKAN_HOME/bin/paster --plugin=ckan create-test-data -c /project/development.ini
 
 # Crea datos de prueba
 if [ "$TEST_DATA" = true]; then
-  echo "Llenando datos de prueba"
   $CKAN_HOME/bin/paster --plugin=ckan create-test-data -c /project/development.ini echo "Llenando datos de prueba"
 fi
 

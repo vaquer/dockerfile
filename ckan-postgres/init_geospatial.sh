@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+# Creacion de tablas y funciones postgis
+psql --username $POSTGRES_USER -d ckan -f /usr/share/postgresql/9.3/contrib/postgis-2.2/postgis.sql
+psql --username $POSTGRES_USER -d ckan -f /usr/share/postgresql/9.3/contrib/postgis-2.2/spatial_ref_sys.sql
+
+# Ajustando permisos de las tablas geoespacioles
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
     ALTER TABLE geometry_columns OWNER TO $POSTGRES_USER;
     ALTER TABLE spatial_ref_sys OWNER TO $POSTGRES_USER;
