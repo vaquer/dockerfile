@@ -13,14 +13,15 @@ if [ "$INIT_DBS" = true ]; then
   $CKAN_HOME/bin/paster --plugin=ckanext-spatial spatial initdb 4326 -c /project/development.ini
 fi
 
+# Load a dump file to ckan database
+if [ "$LOAD_DUMP" == true]; then
+    $CKAN_HOME/bin/paster db load -c /project/development.ini $PATH_DUMP_SQL
+fi
 
-$CKAN_HOME/bin/paster --plugin=ckan create-test-data -c /project/development.ini
-
-# Crea datos de prueba
+# Create test data for development purpose
 if [ "$TEST_DATA" = true]; then
   $CKAN_HOME/bin/paster --plugin=ckan create-test-data -c /project/development.ini echo "Llenando datos de prueba"
 fi
-
 
 # Serve site
 exec apachectl -DFOREGROUND
