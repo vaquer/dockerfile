@@ -10,11 +10,6 @@
 FROM mxabierto/ckan
 MAINTAINER Francisco Vaquero <francisco@opi.la>
 
-# Datos para el datastore
-ENV POSTGRES_ENV_POSTUSER_DATASTORE datastore_default
-ENV POSTGRES_ENV_POSTPWD_DATASTORE datastore_default
-ENV POSTGRES_ENV_DATABASE_DATASTORE datastore_default
-
 # Instalacion de los plugins
 # Agregar tantos como sea necesario siguiendo la estructura:
 # $CKAN_HOME/bin/pip install -e git+https:repo
@@ -33,5 +28,8 @@ RUN \
 # Add my configuration file
 ADD develop.ini /project/development.ini
 ADD start.sh /start.sh
+ADD pgfile.pgpass /root/.pgpass
+
+RUN chmod 0600 /root/.pgpass
 
 ENTRYPOINT ["/start.sh"]

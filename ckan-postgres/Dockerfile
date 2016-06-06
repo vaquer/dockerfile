@@ -14,7 +14,7 @@ RUN \
    libxslt1-dev \
    libgeos-c1
 
-#Rutina para iniciar tablas geospaciales
+# Rutina para iniciar tablas geospaciales
 ADD init_geospatial.sh /docker-entrypoint-initdb.d/postgis.sh
-#Rutina para habilitar el datastore
+# Rutina para habilitar el datastore
 ADD data_store.sh /docker-entrypoint-initdb.d/data_store.sh
