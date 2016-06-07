@@ -24,12 +24,13 @@ RUN \
   $CKAN_HOME/bin/pip install -e git+https://github.com/okfn/ckanext-disqus#egg=ckanext-disqus && \
   $CKAN_HOME/bin/pip install -e git+https://github.com/vaquer/ckanext-mxtheme.git#egg=ckanext-mxtheme
 
+# Create storage volumen folder 
+RUN mkdir -p /var/lib/ckan/storage
 
 # Add my configuration file
 ADD develop.ini /project/development.ini
 ADD start.sh /start.sh
-ADD pgfile.pgpass /root/.pgpass
 
-RUN chmod 0600 /root/.pgpass
+
 
 ENTRYPOINT ["/start.sh"]

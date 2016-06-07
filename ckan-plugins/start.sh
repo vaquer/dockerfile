@@ -19,7 +19,7 @@ fi
 
 #if [ "$LOAD_DUMP" == true]; then
 #  wget /project/dump_ckan.sql $URL_POSTGRES_DUMP
-#  $CKAN_HOME/bin/paster --plugin=ckan db clean -c /project/development.ini 
+#  $CKAN_HOME/bin/paster --plugin=ckan db clean -c /project/development.ini
 #  $CKAN_HOME/bin/paster --plugin=ckan db load -c /project/development.ini /project/dump_ckan.sql
 #fi
 
