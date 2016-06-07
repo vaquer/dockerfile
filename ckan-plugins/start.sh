@@ -15,9 +15,13 @@ if [ "$INIT_DBS" = true ]; then
 fi
 
 # Load a dump file to ckan database
-if [ "$LOAD_DUMP" == true]; then
-  $CKAN_HOME/bin/paster db load -c /project/development.ini $PATH_DUMP_SQL
-fi
+# Temporalmente deshabilitado para probar el dump
+
+#if [ "$LOAD_DUMP" == true]; then
+#  wget /project/dump_ckan.sql $URL_POSTGRES_DUMP
+#  $CKAN_HOME/bin/paster --plugin=ckan db clean -c /project/development.ini 
+#  $CKAN_HOME/bin/paster --plugin=ckan db load -c /project/development.ini /project/dump_ckan.sql
+#fi
 
 # Create test data for development purpose
 if [ "$TEST_DATA" = true]; then
