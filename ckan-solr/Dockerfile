@@ -22,7 +22,9 @@ RUN \
 
 # Add CKAN schema
 ADD start.sh /start.sh
-ADD https://raw.githubusercontent.com/ckan/ckan/master/ckan/config/solr/schema.xml /etc/solr/conf/schema.xml
+#ADD https://raw.githubusercontent.com/ckan/ckan/master/ckan/config/solr/schema.xml /etc/solr/conf/schema.xml
+# Agregamos esquema aumentado para busquedas geo-espaciales
+ADD schema.xml /etc/solr/conf/schema.xml
 
 # Adjust configuration file
 RUN \

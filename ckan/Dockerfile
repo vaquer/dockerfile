@@ -55,6 +55,7 @@ RUN \
   curl -o /bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.6/gosu-$(dpkg --print-architecture)" && \
   chmod +x /bin/gosu
 
+
 # Configure webserver
 ADD apache.wsgi /etc/ckan/apache.wsgi
 ADD ckan_default.conf /etc/apache2/sites-available/ckan_default.conf
@@ -62,6 +63,7 @@ ADD ports.conf /etc/apache2/ports.conf
 RUN \
   a2ensite ckan_default && \
   a2dissite 000-default && \
+  a2enmod headers && \
   mkdir -p /var/www/storage && \
   chown -R www-data:www-data /var/www/ && \
   usermod -u 1000 -d /var/www/storage www-data
