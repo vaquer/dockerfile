@@ -7,13 +7,13 @@
 #   docker run --rm -it mxabierto/nodejs
 
 # Base image
-FROM mxabierto/alpine
+FROM alpine:3.4
 
 MAINTAINER bcessa <ben@pixative.com>
 
 # Extra packages
 RUN \
-  apk-install nodejs && \
+  apk add nodejs --update-cache && \
   npm install -g npm@latest && \
   rm -rf \
     /usr/share/man \
