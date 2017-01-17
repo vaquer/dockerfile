@@ -9,7 +9,7 @@
 #   -dP --link CONTAINER_ID:backend \
 #   mxabierto/varnish
 
-FROM debian:jessie
+FROM ubuntu:xenial
 
 MAINTAINER bcessa <ben@pixative.com>
 
