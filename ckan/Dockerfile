@@ -13,7 +13,7 @@ MAINTAINER bcessa <ben@pixative.com>
 
 # Configuration variables
 ENV CKAN_HOME /usr/lib/ckan
-ENV BRANCH release-v2.5.3
+ENV BRANCH dev-v2.6
 ENV INIT_DBS true
 
 # Locale setup
